@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Office Movies</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Box Office Database</h1>
+        <div class="sort-links">
+            <a href="/?sort_by=worldwide">Sort by Worldwide</a> |
+            <a href="/?sort_by=domestic">Sort by Domestic</a> |
+            <a href="/?sort_by=foreign">Sort by Foreign</a>
+        </div>
+        <form method="get" class="search-form">
+            <input type="text" name="q" placeholder="Search movies..." value="{{ q }}">
+            <button type="submit">Search</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Movie Title</th>
+                    <th>Worldwide Revenue</th>
+                    <th>Domestic Revenue</th>
+                    <th>Foreign Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in movies %}
+                <tr>
+                    <td>{{ movie[0] }}</td>
+                    <td>{{ movie[1] }}</td>
+                    <td>{{ movie[2] }}</td>
+                    <td>{{ movie[3] }}</td>
+                    <td>{{ movie[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
